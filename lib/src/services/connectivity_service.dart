@@ -44,14 +44,13 @@ class Connectivity {
       _connection = await _config.checker.checkConnection(_config);
 
       if (_config.handler is DefaultFlutterHandler) {
-        if (context == null || fallBackScreen == null) {
-          throw Exception(
-              'Context and screen are required when using the default handler');
+        if (context == null) {
+          throw Exception('Context is required when using the default handler');
         }
 
         // ignore: use_build_context_synchronously
         (_config.handler as DefaultFlutterHandler)
-            .init(context, fallBackScreen);
+            .init(context, fallBackScreen ?? const NoInternetScreen());
       }
 
       if (_previousConnection && !_connection) {
