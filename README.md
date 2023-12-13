@@ -12,7 +12,7 @@ Using the default handler for Flutter
 ```dart
 Connectivity.instance.start(
     context: context,
-    fallBackScreen: const NoInternet(), // Screen to show when no internet has been detected
+    fallBackScreen: const NoInternetScreen(), // Screen to show when no internet has been detected. NoInternetScreen is a screen provided by this package but any can be used.
 );
 ``` 
 Make sure to call the ```.start()``` and other methods somewhere in the app where there is a navigator in your context when using the default handler.

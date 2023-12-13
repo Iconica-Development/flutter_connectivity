@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:example/no_internet_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_connectivity/flutter_connectivity.dart';
 
@@ -44,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     Connectivity.instance.start(
       context: context,
-      fallBackScreen: const NoInternet(),
+      fallBackScreen: const NoInternetScreen(),
     );
     Connectivity.instance.setCustomConfig(
       ConnectivityConfig(
