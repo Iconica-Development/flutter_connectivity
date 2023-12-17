@@ -2,6 +2,9 @@
 
 Package that can be used to check for an internet connection in your application
 
+Figma Design that defines this component (only accessible for Iconica developers): https://www.figma.com/file/4WkjwynOz5wFeFBRqTHPeP/Iconica-Design-System?type=design&node-id=516%3A1847&mode=design&t=XulkAJNPQ32ARxWh-1
+Figma clickable prototype that demonstrates this component (only accessible for Iconica developers): https://www.figma.com/proto/4WkjwynOz5wFeFBRqTHPeP/Iconica-Design-System?type=design&node-id=340-611&viewport=-4958%2C-31%2C0.33&t=XulkAJNPQ32ARxWh-0&scaling=min-zoom&starting-point-node-id=516%3A3402&show-proto-sidebar=1
+
 ## Setup
 
 See [example](./example/lib/main.dart) app for a guide
