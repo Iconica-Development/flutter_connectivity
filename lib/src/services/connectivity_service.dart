@@ -15,7 +15,7 @@ class Connectivity {
 
   ConnectivityConfig? __config;
   ConnectivityConfig get _config =>
-      __config ?? ConnectivityConfig.defaultConfig();
+      __config ??= ConnectivityConfig.defaultConfig();
   void setCustomConfig(ConnectivityConfig config) => __config = config;
 
   bool _connection = true;
