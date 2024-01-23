@@ -43,7 +43,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     Connectivity.instance.start(
       context: context,
-      fallBackScreen: const NoInternetScreen(),
     );
     Connectivity.instance.setCustomConfig(
       ConnectivityConfig(

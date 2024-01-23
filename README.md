@@ -1,4 +1,4 @@
-[![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://github.com/tenhobi/effective_dart) 
+[![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://github.com/tenhobi/effective_dart)
 
 Package that can be used to check for an internet connection in your application
 
@@ -12,15 +12,29 @@ See [example](./example/lib/main.dart) app for a guide
 ## How to use
 
 Using the default handler for Flutter
+
 ```dart
 Connectivity.instance.start(
     context: context,
-    fallBackScreen: const NoInternetScreen(), // Screen to show when no internet has been detected. NoInternetScreen is a screen provided by this package but any can be used.
+    connectivityDisplayType: ConnectivityDisplayType.screen, // enum to set how the connectivity widget will display, Default ConnectivityDisplayType.screen.
+    fallBackScreen: const NoInternetScreen(
+      connectivityDisplayType: ConnectivityDisplayType.screen,
+    ), // Screen to show when no internet has been detected. NoInternetScreen is a screen provided by this package but any can be used. When you override the default implementation of the fallBackScreen make sure you also give the same connectivityDisplayType to the fallBackScreen.
 );
-``` 
-Make sure to call the ```.start()``` and other methods somewhere in the app where there is a navigator in your context when using the default handler.
+```
+
+If you are going to use the SnackBar option and you want to change the backgroundColor set a backgroundColor for the SnackBar in your theme like so:
+
+```
+snackBarTheme: const SnackBarThemeData(
+  backgroundColor: Colors.red,
+)
+```
+
+Make sure to call the `.start()` and other methods somewhere in the app where there is a navigator in your context when using the default handler.
 
 Configuration can be customzied using the following method:
+
 ```dart
 Connectivity.instance.setCustomConfig(
     ConnectivityConfig(
@@ -65,12 +79,12 @@ class CustomInternetChecker implements ConnectivityChecker {
 ```
 
 When using a custom handler, the instance can be started without the context and fallBackScreen parameters
+
 ```dart
 Connectivity.instance.start();
 ```
 
 For a complete overview of how to use it look at the [example](./example/lib/main.dart) app
-
 
 ## Issues
 
