@@ -32,7 +32,12 @@ class Connectivity {
   /// [fallBackScreen] is the screen that will be pushed when there is no internet connection.
   /// [fallBackScreen] is the screen that will be popped when there is an internet connection.
   /// [fallBackScreen] is only used when using the default handler.
-  void start({BuildContext? context, Widget? fallBackScreen}) {
+  /// [noInternetEnum] is only used when using the default handler.
+  void start({
+    BuildContext? context,
+    Widget? fallBackScreen,
+    ConnectivityDisplayType? connectivityDisplayType,
+  }) {
     _timer ??= Timer.periodic(_config.duration, (t) async {
       _previousConnection = _connection;
 
@@ -49,8 +54,15 @@ class Connectivity {
         }
 
         // ignore: use_build_context_synchronously
-        (_config.handler as DefaultFlutterHandler)
-            .init(context, fallBackScreen ?? const NoInternetScreen());
+        (_config.handler as DefaultFlutterHandler).init(
+          context,
+          fallBackScreen ??
+              NoInternetScreen(
+                connectivityDisplayType:
+                    connectivityDisplayType ?? ConnectivityDisplayType.screen,
+              ),
+          connectivityDisplayType ?? ConnectivityDisplayType.screen,
+        );
       }
 
       if (_previousConnection && !_connection) {
