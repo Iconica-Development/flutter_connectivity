@@ -67,7 +67,10 @@ class DefaultFlutterHandler implements ConnectivityHandler {
         showDialog(
           barrierDismissible: isDismissible,
           context: context,
-          builder: (context) => screen,
+          builder: (context) => PopScope(
+            canPop: isDismissible,
+            child: screen,
+          ),
         );
         hasPushed = true;
         return;

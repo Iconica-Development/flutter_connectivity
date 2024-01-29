@@ -1,3 +1,11 @@
+## 0.2.2
+
+* Fixed bug with popUp being dismissible on android phones
+
+## 0.2.1
+
+* Added multiple options of the connectivity widget
+
 ## 0.1.1
 
 * Fix simplest config to cache
