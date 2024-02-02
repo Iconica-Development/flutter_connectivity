@@ -64,14 +64,17 @@ class DefaultFlutterHandler implements ConnectivityHandler {
           connectivityDisplayType == ConnectivityDisplayType.popUpDismissible) {
         var isDismissible =
             connectivityDisplayType != ConnectivityDisplayType.popUp;
-        showDialog(
-          barrierDismissible: isDismissible,
-          context: context,
-          builder: (context) => PopScope(
-            canPop: isDismissible,
-            child: screen,
+        unawaited(
+          showDialog(
+            barrierDismissible: isDismissible,
+            context: context,
+            builder: (context) => PopScope(
+              canPop: isDismissible,
+              child: screen,
+            ),
           ),
         );
+
         hasPushed = true;
         return;
       }

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_constructors_over_static_methods
+
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -29,8 +31,10 @@ class Connectivity {
   /// Starts the service.
   /// [context] is required when using the default handler.
   /// [fallBackScreen] is required when using the default handler.
-  /// [fallBackScreen] is the screen that will be pushed when there is no internet connection.
-  /// [fallBackScreen] is the screen that will be popped when there is an internet connection.
+  /// [fallBackScreen] is the screen that will be pushed when there is no
+  /// internet connection.
+  /// [fallBackScreen] is the screen that will be popped when there is an
+  /// internet connection.
   /// [fallBackScreen] is only used when using the default handler.
   /// [noInternetEnum] is only used when using the default handler.
   void start({
@@ -43,7 +47,9 @@ class Connectivity {
 
       if (kIsWeb && _config.webUrl == null) {
         throw Exception(
-            'To make flutter_connectivity work for web please specifiy a webUrl in the config. Make sure, CORS is not an issue');
+          'To make flutter_connectivity work for web please specifiy a webUrl'
+          ' in the config. Make sure, CORS is not an issue',
+        );
       }
 
       _connection = await _config.checker.checkConnection(_config);
