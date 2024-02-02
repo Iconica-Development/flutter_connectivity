@@ -1,3 +1,7 @@
+## 0.2.3
+
+* Added Iconica CI and Iconica Linter
+
 ## 0.2.2
 
 * Fixed bug with popUp being dismissible on android phones
