@@ -1,3 +1,5 @@
+// ignore_for_file: one_member_abstracts
+
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -19,7 +21,7 @@ class InternetChecker implements ConnectivityChecker {
       );
 
       return true;
-    } catch (e) {
+    } on Exception catch (_) {
       return false;
     }
   }
@@ -32,7 +34,7 @@ class InternetChecker implements ConnectivityChecker {
       }
     } on SocketException catch (_) {
       return false;
-    } catch (_) {
+    } on Exception catch (_) {
       return false;
     }
 

@@ -4,6 +4,7 @@ import 'package:flutter_connectivity/src/enums/connectivity_display_type_enum.da
 /// Standard screen to use as fallback.
 class NoInternetScreen extends StatefulWidget {
   const NoInternetScreen({
+    required this.connectivityDisplayType,
     this.titleText = 'No internet',
     this.underTitleText = 'It seems like you don\'t have an active internet '
         'connection. Please check your network and try again.',
@@ -14,7 +15,6 @@ class NoInternetScreen extends StatefulWidget {
     this.underTitle,
     this.backgroundColor,
     this.horinzontalPadding = 16,
-    required this.connectivityDisplayType,
     super.key,
   });
 
@@ -39,7 +39,8 @@ class NoInternetScreen extends StatefulWidget {
   /// Widget to override the standard under title.
   final Widget? underTitle;
 
-  /// Color of the background. If null the background of the colorScheme is used.
+  /// Color of the background. If null the background of the colorScheme
+  /// is used.
   final Color? backgroundColor;
 
   /// Padding for the text on the horinzontal sides.
@@ -92,27 +93,25 @@ class _ConnectivityWidget extends StatelessWidget {
   final ThemeData theme;
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        widget.title ??
-            Text(
-              widget.titleText,
-              style: widget.titleTextStyle ?? theme.textTheme.displayMedium,
-              textAlign: TextAlign.center,
-            ),
-        SizedBox(
-          height: widget.titleSpacer,
-        ),
-        widget.underTitle ??
-            Text(
-              widget.underTitleText,
-              style: widget.underTitleTextStyle ?? theme.textTheme.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
-      ],
-    );
-  }
+  Widget build(BuildContext context) => Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          widget.title ??
+              Text(
+                widget.titleText,
+                style: widget.titleTextStyle ?? theme.textTheme.displayMedium,
+                textAlign: TextAlign.center,
+              ),
+          SizedBox(
+            height: widget.titleSpacer,
+          ),
+          widget.underTitle ??
+              Text(
+                widget.underTitleText,
+                style: widget.underTitleTextStyle ?? theme.textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
+        ],
+      );
 }
