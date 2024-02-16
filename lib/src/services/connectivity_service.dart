@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_constructors_over_static_methods
+// ignore_for_file: use_build_context_synchronously
 
 import 'dart:async';
 
@@ -59,7 +60,6 @@ class Connectivity {
           throw Exception('Context is required when using the default handler');
         }
 
-        // ignore: use_build_context_synchronously
         (_config.handler as DefaultFlutterHandler).init(
           context,
           fallBackScreen ??

@@ -15,6 +15,9 @@ class NoInternetScreen extends StatefulWidget {
     this.underTitle,
     this.backgroundColor,
     this.horinzontalPadding = 16,
+    this.alignment,
+    this.shape,
+    this.contentPadding,
     super.key,
   });
 
@@ -49,6 +52,15 @@ class NoInternetScreen extends StatefulWidget {
   /// Enum to determine which fallback widget to use.
   final ConnectivityDisplayType connectivityDisplayType;
 
+  /// Alignment for alert dialog.
+  final AlignmentGeometry? alignment;
+
+  /// Shape for alert dialog.
+  final ShapeBorder? shape;
+
+  /// Content padding for alert dialog.
+  final EdgeInsetsGeometry? contentPadding;
+
   @override
   State<NoInternetScreen> createState() => _NoInternetScreenState();
 }
@@ -62,6 +74,9 @@ class _NoInternetScreenState extends State<NoInternetScreen> {
         widget.connectivityDisplayType ==
             ConnectivityDisplayType.popUpDismissible) {
       return AlertDialog(
+        contentPadding: widget.contentPadding,
+        alignment: widget.alignment,
+        shape: widget.shape,
         backgroundColor: widget.backgroundColor ?? theme.colorScheme.background,
         content: _ConnectivityWidget(widget: widget, theme: theme),
       );
