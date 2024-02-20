@@ -1,3 +1,6 @@
+## 0.2.5
+* Exposed inset padding for alert dialog
+
 ## 0.2.4
 * Exposed alignment, border shape and content padding for alert dialog
 
