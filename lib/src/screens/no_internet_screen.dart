@@ -18,6 +18,7 @@ class NoInternetScreen extends StatefulWidget {
     this.alignment,
     this.shape,
     this.contentPadding,
+    this.insetPadding,
     super.key,
   });
 
@@ -61,6 +62,9 @@ class NoInternetScreen extends StatefulWidget {
   /// Content padding for alert dialog.
   final EdgeInsetsGeometry? contentPadding;
 
+  /// Inset padding for alert dialog.
+  final EdgeInsets? insetPadding;
+
   @override
   State<NoInternetScreen> createState() => _NoInternetScreenState();
 }
@@ -75,6 +79,8 @@ class _NoInternetScreenState extends State<NoInternetScreen> {
             ConnectivityDisplayType.popUpDismissible) {
       return AlertDialog(
         contentPadding: widget.contentPadding,
+        insetPadding: widget.insetPadding ??
+            const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
         alignment: widget.alignment,
         shape: widget.shape,
         backgroundColor: widget.backgroundColor ?? theme.colorScheme.background,
