@@ -19,6 +19,7 @@ class NoInternetScreen extends StatefulWidget {
     this.shape,
     this.contentPadding,
     this.insetPadding,
+    this.closeButtonBuilder,
     super.key,
   });
 
@@ -65,6 +66,9 @@ class NoInternetScreen extends StatefulWidget {
   /// Inset padding for alert dialog.
   final EdgeInsets? insetPadding;
 
+  /// Builder for close button. Can be used in case of dismissible pop up.
+  final Widget? closeButtonBuilder;
+
   @override
   State<NoInternetScreen> createState() => _NoInternetScreenState();
 }
@@ -84,7 +88,11 @@ class _NoInternetScreenState extends State<NoInternetScreen> {
         alignment: widget.alignment,
         shape: widget.shape,
         backgroundColor: widget.backgroundColor ?? theme.colorScheme.background,
-        content: _ConnectivityWidget(widget: widget, theme: theme),
+        content: _ConnectivityWidget(
+          widget: widget,
+          theme: theme,
+          closeButtonBuilder: widget.closeButtonBuilder,
+        ),
       );
     }
 
@@ -97,7 +105,10 @@ class _NoInternetScreenState extends State<NoInternetScreen> {
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: widget.horinzontalPadding),
-          child: _ConnectivityWidget(widget: widget, theme: theme),
+          child: _ConnectivityWidget(
+            widget: widget,
+            theme: theme,
+          ),
         ),
       ),
     );
@@ -108,16 +119,34 @@ class _ConnectivityWidget extends StatelessWidget {
   const _ConnectivityWidget({
     required this.widget,
     required this.theme,
+    this.closeButtonBuilder,
   });
 
   final NoInternetScreen widget;
   final ThemeData theme;
+  final Widget? closeButtonBuilder;
 
   @override
   Widget build(BuildContext context) => Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          if (widget.connectivityDisplayType ==
+              ConnectivityDisplayType.popUpDismissible)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                closeButtonBuilder ??
+                    IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      icon: const Icon(Icons.close),
+                    ),
+              ],
+            )
+          else
+            const SizedBox(),
           widget.title ??
               Text(
                 widget.titleText,
