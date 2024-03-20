@@ -1,3 +1,6 @@
+## 0.2.6
+* Add close icon button on dialog for popUpDismissible
+
 ## 0.2.5
 * Exposed inset padding for alert dialog
 
