@@ -8,8 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_connectivity/flutter_connectivity.dart';
 
 /// Service that can be used to check for internet connection.
-class Connectivity {
-  Connectivity._();
+class Connectivity with WidgetsBindingObserver {
+  Connectivity._() {
+    WidgetsBinding.instance.addObserver(this);
+  }
 
   static Connectivity? _instance;
 
@@ -48,7 +50,7 @@ class Connectivity {
 
       if (kIsWeb && _config.webUrl == null) {
         throw Exception(
-          'To make flutter_connectivity work for web please specifiy a webUrl'
+          'To make flutter_connectivity work for web please specify a webUrl'
           ' in the config. Make sure, CORS is not an issue',
         );
       }
@@ -77,5 +79,15 @@ class Connectivity {
         _config.handler.onConnectionRestored();
       }
     });
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _timer?.cancel();
+      start();
+    } else {
+      _timer?.cancel();
+    }
   }
 }
