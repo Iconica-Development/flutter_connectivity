@@ -1,3 +1,6 @@
+## 0.2.7
+* Fix lifecycle listening of the timer
+
 ## 0.2.6
 * Add close icon button on dialog for popUpDismissible
 

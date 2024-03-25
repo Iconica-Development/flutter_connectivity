@@ -1,15 +1,16 @@
 // ignore_for_file: prefer_constructors_over_static_methods
 // ignore_for_file: use_build_context_synchronously
 
-import 'dart:async';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_connectivity/flutter_connectivity.dart';
+import 'package:flutter_connectivity/src/services/pauseable_timer.dart';
 
 /// Service that can be used to check for internet connection.
-class Connectivity {
-  Connectivity._();
+class Connectivity with WidgetsBindingObserver {
+  Connectivity._() {
+    WidgetsBinding.instance.addObserver(this);
+  }
 
   static Connectivity? _instance;
 
@@ -23,7 +24,7 @@ class Connectivity {
 
   bool _connection = true;
   bool _previousConnection = true;
-  Timer? _timer;
+  PausableTimer? _timer;
 
   /// Returns true if there is an internet connection.
   /// Returns false if there is no internet connection.
@@ -43,12 +44,12 @@ class Connectivity {
     Widget? fallBackScreen,
     ConnectivityDisplayType? connectivityDisplayType,
   }) {
-    _timer ??= Timer.periodic(_config.duration, (t) async {
+    _timer ??= PausableTimer.periodic(_config.duration, () async {
       _previousConnection = _connection;
 
       if (kIsWeb && _config.webUrl == null) {
         throw Exception(
-          'To make flutter_connectivity work for web please specifiy a webUrl'
+          'To make flutter_connectivity work for web please specify a webUrl'
           ' in the config. Make sure, CORS is not an issue',
         );
       }
@@ -76,6 +77,18 @@ class Connectivity {
       } else if (!_previousConnection && _connection) {
         _config.handler.onConnectionRestored();
       }
-    });
+    })
+      ..start();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      if (_timer != null) {
+        _timer!.start();
+      }
+    } else {
+      _timer?.pause();
+    }
   }
 }
