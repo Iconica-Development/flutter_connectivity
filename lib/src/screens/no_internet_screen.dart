@@ -87,7 +87,7 @@ class _NoInternetScreenState extends State<NoInternetScreen> {
             const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
         alignment: widget.alignment,
         shape: widget.shape,
-        backgroundColor: widget.backgroundColor ?? theme.colorScheme.background,
+        backgroundColor: widget.backgroundColor ?? theme.colorScheme.surface,
         content: _ConnectivityWidget(
           widget: widget,
           theme: theme,
@@ -101,7 +101,7 @@ class _NoInternetScreenState extends State<NoInternetScreen> {
     }
 
     return Scaffold(
-      backgroundColor: widget.backgroundColor ?? theme.colorScheme.background,
+      backgroundColor: widget.backgroundColor ?? theme.colorScheme.surface,
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: widget.horinzontalPadding),
