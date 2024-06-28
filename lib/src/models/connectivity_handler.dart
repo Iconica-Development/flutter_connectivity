@@ -1,7 +1,7 @@
-import 'dart:async';
+import "dart:async";
 
-import 'package:flutter/material.dart';
-import 'package:flutter_connectivity/src/enums/connectivity_display_type_enum.dart';
+import "package:flutter/material.dart";
+import "package:flutter_connectivity/src/enums/connectivity_display_type_enum.dart";
 
 /// Implement this class to create a custom handler for internet connection.
 abstract class ConnectivityHandler {

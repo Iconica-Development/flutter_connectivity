@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_asserts_with_message, depend_on_referenced_packages
 
-import 'dart:async' show Timer, Zone;
+import "dart:async" show Timer, Zone;
 
-import 'package:clock/clock.dart' show clock;
+import "package:clock/clock.dart" show clock;
 
 final class PausableTimer implements Timer {
   PausableTimer(this.duration, void Function() callback)

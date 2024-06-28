@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_constructors_over_static_methods
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_connectivity/flutter_connectivity.dart';
-import 'package:flutter_connectivity/src/services/pauseable_timer.dart';
+import "package:flutter/foundation.dart";
+import "package:flutter/material.dart";
+import "package:flutter_connectivity/flutter_connectivity.dart";
+import "package:flutter_connectivity/src/services/pauseable_timer.dart";
 
 /// Service that can be used to check for internet connection.
 class Connectivity with WidgetsBindingObserver {
@@ -20,6 +20,7 @@ class Connectivity with WidgetsBindingObserver {
   ConnectivityConfig? __config;
   ConnectivityConfig get _config =>
       __config ??= ConnectivityConfig.defaultConfig();
+  // ignore: use_setters_to_change_properties
   void setCustomConfig(ConnectivityConfig config) => __config = config;
 
   bool _connection = true;
@@ -49,8 +50,8 @@ class Connectivity with WidgetsBindingObserver {
 
       if (kIsWeb && _config.webUrl == null) {
         throw Exception(
-          'To make flutter_connectivity work for web please specify a webUrl'
-          ' in the config. Make sure, CORS is not an issue',
+          "To make flutter_connectivity work for web please specify a webUrl"
+          " in the config. Make sure, CORS is not an issue",
         );
       }
 
@@ -58,7 +59,7 @@ class Connectivity with WidgetsBindingObserver {
 
       if (_config.handler is DefaultFlutterHandler) {
         if (context == null) {
-          throw Exception('Context is required when using the default handler');
+          throw Exception("Context is required when using the default handler");
         }
 
         (_config.handler as DefaultFlutterHandler).init(
