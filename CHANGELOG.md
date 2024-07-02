@@ -1,3 +1,6 @@
+## 0.2.8
+* Change deprecated background to surface from flutter theme
+
 ## 0.2.7
 * Fix lifecycle listening of the timer
 

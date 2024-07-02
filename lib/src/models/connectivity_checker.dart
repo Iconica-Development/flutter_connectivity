@@ -1,10 +1,10 @@
 // ignore_for_file: one_member_abstracts
 
-import 'dart:io';
+import "dart:io";
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter_connectivity/flutter_connectivity.dart';
-import 'package:http/http.dart';
+import "package:flutter/foundation.dart";
+import "package:flutter_connectivity/flutter_connectivity.dart";
+import "package:http/http.dart";
 
 /// Implement this class to create a custom check for internet connection.
 /// Default implementation is [InternetChecker].

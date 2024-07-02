@@ -1,13 +1,13 @@
 // ignore_for_file: prefer_initializing_formals
 
-import 'package:flutter_connectivity/src/models/connectivity_checker.dart';
-import 'package:flutter_connectivity/src/models/connectivity_handler.dart';
+import "package:flutter_connectivity/src/models/connectivity_checker.dart";
+import "package:flutter_connectivity/src/models/connectivity_handler.dart";
 
 /// Configuration for [Connectivity].
 class ConnectivityConfig {
   /// Create a custom configuration for [Connectivity].
   ConnectivityConfig({
-    this.url = 'google.nl',
+    this.url = "google.nl",
     this.webUrl,
     this.duration = const Duration(seconds: 3),
     handler,

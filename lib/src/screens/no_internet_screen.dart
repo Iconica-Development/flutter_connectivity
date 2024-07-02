@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_connectivity/src/enums/connectivity_display_type_enum.dart';
+import "package:flutter/material.dart";
+import "package:flutter_connectivity/src/enums/connectivity_display_type_enum.dart";
 
 /// Standard screen to use as fallback.
 class NoInternetScreen extends StatefulWidget {
   const NoInternetScreen({
     required this.connectivityDisplayType,
-    this.titleText = 'No internet',
-    this.underTitleText = 'It seems like you don\'t have an active internet '
-        'connection. Please check your network and try again.',
+    this.titleText = "No internet",
+    this.underTitleText = "It seems like you don't have an active internet "
+        "connection. Please check your network and try again.",
     this.titleTextStyle,
     this.underTitleTextStyle,
     this.titleSpacer = 8,
@@ -87,7 +87,7 @@ class _NoInternetScreenState extends State<NoInternetScreen> {
             const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
         alignment: widget.alignment,
         shape: widget.shape,
-        backgroundColor: widget.backgroundColor ?? theme.colorScheme.background,
+        backgroundColor: widget.backgroundColor ?? theme.colorScheme.surface,
         content: _ConnectivityWidget(
           widget: widget,
           theme: theme,
@@ -101,7 +101,7 @@ class _NoInternetScreenState extends State<NoInternetScreen> {
     }
 
     return Scaffold(
-      backgroundColor: widget.backgroundColor ?? theme.colorScheme.background,
+      backgroundColor: widget.backgroundColor ?? theme.colorScheme.surface,
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: widget.horinzontalPadding),
